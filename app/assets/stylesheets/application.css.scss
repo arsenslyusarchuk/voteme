@@ -1,0 +1,94 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "angucomplete";
+@import "awesome-bootstrap-checkbox";
+
+body {
+  padding-top: 50px;
+  background: -webkit-linear-gradient(90deg, #83a4d4 10%, #b6fbff 90%); /* Chrome 10+, Saf5.1+ */
+  background:    -moz-linear-gradient(90deg, #83a4d4 10%, #b6fbff 90%); /* FF3.6+ */
+  background:     -ms-linear-gradient(90deg, #83a4d4 10%, #b6fbff 90%); /* IE10 */
+  background:      -o-linear-gradient(90deg, #83a4d4 10%, #b6fbff 90%); /* Opera 11.10+ */
+  background:         linear-gradient(90deg, #83a4d4 10%, #b6fbff 90%); /* W3C */
+}
+
+.user_email {
+  color: white
+}
+
+.modal-form .form-control {
+  width: 100%;
+}
+
+.modal-form .form-group {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.non-resize {
+  resize: none;
+}
+
+.btn-xlarge {
+    padding: 18px 28px;
+    font-size: 22px; //change this to your desired size
+    line-height: normal;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+}
+
+.signin-body {
+  margin-top: 200px;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  .form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+    .form-signin-heading {
+      text-align: center;
+    }
+  }
+}
+.description {
+  height: 100px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.card {
+  height: 256px;
+  margin-bottom: 10px;
+}
+.card-detail {
+  margin-top: 50px;
+}
+.angucomplete-holder>.search-field {
+  width: 250px;
+  margin-bottom: 0px;
+}
+
+.footer {
+  width: 100%;
+  height: 60px;
+  .container {
+    padding-right: 15px;
+    padding-left: 15px;
+    .text-muted {
+      margin: 20px 0;
+    }
+  }
+}
+.text-muted {
+color: #777;
+}
+
+.checkbox input[type=checkbox]:checked + label:after {
+    font-family: 'Glyphicons Halflings';
+    content: "\e013";
+}
+.checkbox label:after {
+    padding-left: 4px;
+    padding-top: 2px;
+    font-size: 9px;
+}

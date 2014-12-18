@@ -1,0 +1,51 @@
+.modal-header
+  %a.close{"data-dismiss" => "modal", :type => "button"}
+    %span{"aria-hidden" => "true", 'ng-click'=>"cancel()"} ×
+    %span.sr-only Close
+  %h4#myModalLabel.modal-title Create Poll
+.modal-body
+  %form.form-horizontal.modal-form{:name => "pollForm", "ng-submit" => "savePoll()", :novalidate => ""}
+    %div{"ng-show" => "errorMessage"}
+    .form-group
+      %label.col-sm-2.control-label{:for => "pollTitle"} Title
+      .col-sm-10
+        %input.form-control#pollTitle{"name" => "title", "ng-model" => "poll.title", :required => ""}
+      .error-container.col-sm-12{"ng-show" => "pollForm.title.$invalid && pollForm.submitted"}
+        %p.help-block.error{"ng-show" => "pollForm.title.$error.required"}
+          Title is required.
+    .form-group
+      %label.col-sm-2.control-label{:for => "pollDescription"} Description
+      .col-sm-10
+        %textarea.non-resize.form-control#pollDescription{"name" => "description", "rows" => "5", "ng-model" => "poll.description", :required => ""}
+      .error-container.col-sm-12{"ng-show" => "pollForm.description.$invalid && pollForm.submitted"}
+        %p.help-block.error{"ng-show" => "pollForm.description.$error.required"}
+          Description is required.
+    .form-group
+      .col-sm-12
+        / %label.radio-inline
+        /   %input{"ng-model" => "poll.poll_type", :type => "radio", :value => "radio"} Radio (1 answer can be choosed)
+        / %label.radio-inline
+        /   %input{"ng-model" => "poll.poll_type", :value => "checkbox", :type => "radio"} Checkbox (multiple answers can be choosed)
+
+        .radio.radio-primary.radio-inline
+          %input{:id => "radio", "ng-model" => "poll.poll_type", :type => "radio", :value => "radio"}
+          %label(for="radio")
+            Radio (1 answer can be choosed)
+        .radio.radio-primary.radio-inline
+          %input{:id => "checkbox", "ng-model" => "poll.poll_type", :value => "checkbox", :type => "radio"}
+          %label(for="checkbox")
+            Checkbox (multiple answers can be choosed)
+    .form-group
+      %label.col-sm-2.control-label Answers
+    .form-group{"ng-repeat" => 'answer in poll.answers_attributes'}
+      .col-sm-10
+        %input.form-control{"name" => "answer_title{{$index}}", "ng-model" => "answer.title", :required => ""}
+      .col-sm-2{"ng-if" => 'poll.answers_attributes.length > 2'}
+        %a.btn.btn-danger{"ng-click" => "removeAnswer($index)"} Remove
+      .error-container.col-sm-12{"ng-show" => "pollForm.answer_title{{$index}}.$invalid && pollForm.submitted"}
+        %p.help-block.error{"ng-show" => "pollForm.answer_title{{$index}}.$error.required"}
+          Title is required.
+    %a.btn.btn-primary{"ng-click" => "addAnswer()"} Add answer
+.modal-footer
+  %a.btn.btn-default{'ng-click'=>"cancel()"} Close
+  %a.btn.btn-primary{"ng-click" => "savePoll()"} Save changes

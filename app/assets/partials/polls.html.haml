@@ -1,0 +1,22 @@
+#loadingWidget.jumbotron(style="padding-top:100px;opacity:0.5" ng-if="busy && !polls.length")
+  %p.text-center
+    %strong Loading...
+#loadingWidget.jumbotron(style="padding-top:100px;opacity:0.5" ng-if="!busy && !polls.length")
+  %p.text-center
+    %strong No results found
+.jumbotron(ng-if="lastPoll")
+  .container
+    %span{"spinner-key" => "spinner-1", "us-spinner" => "{radius:30, width:8, length: 16}"}
+    %h1 {{lastPoll.title}}
+    %p {{lastPoll.description}}
+    %p
+      %a.btn.btn-primary.btn-lg(ng-href="/polls/{{lastPoll.id}}") Learn more »
+.container(infinite-scroll="load_data()"  infinite-scroll-disabled='busy' infinite-scroll-distance='1' infinite-scroll-immediate-check='true')
+  .row
+    .col-md-4.card(ng-repeat="poll in polls")
+      .well
+        %h2 {{poll.title}}
+        %p.description {{poll.description}}
+        %p
+          %a.btn.btn-default(ng-href="/polls/{{poll.id}}") View details »
+

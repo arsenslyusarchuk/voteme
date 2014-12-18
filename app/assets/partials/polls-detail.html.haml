@@ -1,0 +1,33 @@
+.container
+  .row
+    .well.col-md-12.card-detail(ng-show="poll")
+      %a.btn.btn-lg.btn-danger.pull-right(href="" ng-click="destroyPoll()" ng-if="poll.can_delete") Destroy
+      %h2 {{poll.title}}
+      %p {{poll.description}}
+      %div(ng-if="!poll.user_voted")
+        .checkbox.checkbox-primary(ng-repeat="answer in poll.answers" ng-if="poll.poll_type === 'checkbox' ")
+          %input{:name => "selectedAnswers[]", "ng-checked" => "selection.indexOf(answer.title) > -1", "ng-click" => "toggleSelection(answer.id)", :type => "checkbox", :id => "answer{{answer.id}}"}
+          %label(for="answer{{answer.id}}")
+            {{answer.title}}
+
+        .radio.radio-primary(ng-repeat="answer in poll.answers" ng-if="poll.poll_type === 'radio' ")
+          %input{:id => "answer{{answer.id}}", "name" => "selectedAnswers", "ng-model" => "selectedAnswers[0]", :value => "{{answer.id}}", :type => "radio"}
+          %label(for="answer{{answer.id}}")
+            {{answer.title}}
+        %p
+          %a.btn.btn-lg.btn-primary(href="" ng-click="vote()" ng-disabled="checkDisabled()") Vote »
+      %div(ng-if="poll.user_voted")
+        %hr/
+        %h3
+          Results
+          %small
+            %br/
+            %em {{poll.voting_results.length}} users voted
+            %br/
+            %em {{max}} total votes
+        %div(ng-repeat='answer in poll.voting_results')
+          %small
+            %em {{showAnswerTitle(answer[0])}}
+          %progressbar{:animate => "false", :type => "success", :value => "calculatePercentage($index)"}
+            %b {{calculatePercentage($index)}}%
+
