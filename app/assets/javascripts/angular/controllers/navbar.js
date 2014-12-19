@@ -17,7 +17,7 @@ angular.module('voteMe')
     };
 
     $scope.openPollModal = function() {
-      var PollFormCtrl = function ($rootScope, $scope, $modalInstance, Poll) {
+      var PollFormCtrl = ['$rootScope', '$scope', '$modalInstance', 'Poll', function ($rootScope, $scope, $modalInstance, Poll) {
         $scope.errorMessage = null;
         $scope.cancel = function () {
           $modalInstance.close();
@@ -60,7 +60,7 @@ angular.module('voteMe')
         $scope.removeAnswer = function(index){
           $scope.poll.answers_attributes.splice(index,1);
         };
-      };
+      }];
 
       $scope.modalInstance = $modal.open({
         templateUrl: 'polls_form.html',
