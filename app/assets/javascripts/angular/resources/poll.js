@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('voteMe')
-  .factory('Poll', function ($resource) {
+  .factory('Poll', ['$resource', function ($resource) {
     return $resource(
       '/api/v1/polls/:id',
       {
@@ -12,4 +12,4 @@ angular.module('voteMe')
       }
     );
   }
-);
+]);
