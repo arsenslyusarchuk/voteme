@@ -1,18 +1,21 @@
 development:
-  adapter: mysql2
+  adapter: postgresql
   database: voteme
   username: root
-  password: password
+  password: postgres
   host: localhost
+  port: 5432
 test:
-  adapter: mysql2
+  adapter: postgresql
   database: voteme_test
   username: root
-  password: password
+  password: postgres
   host: localhost
+  port: 5432
 production:
-  adapter: mysql2
+  adapter: postgresql
   database: voteme
   username: root
   password:
   host: localhost
+  port: 5432
