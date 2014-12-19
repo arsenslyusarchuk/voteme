@@ -36,7 +36,7 @@
             .navbar-form.navbar-right{"ng-controller" => "NavBarCtrl"}
               %span
                 .form-group
-                  %angucomplete#members{:datafield => "", :descriptionfield => "", :inputclass => "form-control search-field", :pause => "600", :placeholder => "Search polls", :selectedobject => "testObj", :titlefield => "title", :minlength => "3", :url => "http://#{request.host_with_port}/api/v1/polls/search?page=1&per_page=10&search="}
+                  %angucomplete#members{:datafield => "", :descriptionfield => "", :inputclass => "form-control search-field", :pause => "600", :placeholder => "Search polls", :selectedobject => "testObj", :titlefield => "title", :minlength => "3", :url => "#{request.original_url}api/v1/polls/search?page=1&per_page=10&search="}
                 .form-group
                   = render 'shared/navbar'
               .form-group
