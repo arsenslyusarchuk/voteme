@@ -51,7 +51,13 @@ angular.module('voteMe')
           search: search
         };
         Poll.query($scope.filterCriteria, function(data){
-          // $window.scrollTo(0, 0);
+          if ($scope.lastPoll) {
+            for(var i=0;i<data.length;i++){
+              if (data[i].id === $scope.lastPoll.id) {
+                data.splice(0,1)[i];
+              }
+            }
+          }
           $scope.polls = data;
           $scope.isLastEmpty = data.length == 0;
           $scope.filterCriteria.page +=1;
