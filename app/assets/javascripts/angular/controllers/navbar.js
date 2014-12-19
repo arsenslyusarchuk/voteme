@@ -63,7 +63,7 @@ angular.module('voteMe')
       };
 
       $scope.modalInstance = $modal.open({
-        templateUrl: '/assets/polls_form.html',
+        templateUrl: 'polls_form.html',
         controller: PollFormCtrl,
         // backdrop: 'static'
       });
