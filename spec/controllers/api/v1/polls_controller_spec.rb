@@ -77,7 +77,7 @@ describe Api::V1::PollsController, type: :controller do
       end
       it 'creates the poll' do
         response = oauth_post page, api_v1_polls_path(user), {title: "simple title", description: "simple description", poll_type: 'checkbox'}
-        page.driver.response.status.should eq 200
+        expect(page.driver.response.status).to eq 200
         Poll.find(response['id']).title.should eq "simple title"
       end
     end
