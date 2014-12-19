@@ -36,7 +36,9 @@ angular.module('voteMe')
 
 
     $scope.addCreatedPoll = function(e, poll) {
-      $scope.polls.unshift($scope.lastPoll);
+      if ($scope.lastPoll) {
+        $scope.polls.unshift($scope.lastPoll);
+      }
       $scope.lastPoll = poll;
     };
 

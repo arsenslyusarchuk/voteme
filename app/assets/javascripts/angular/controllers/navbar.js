@@ -36,7 +36,6 @@ angular.module('voteMe')
         }
 
         $scope.savePoll = function() {
-          console.warn(JSON.stringify($scope.poll));
           if($scope.pollForm.$valid) {
             // $scope.showLoading();
             $scope.poll.$save(function (data) {
