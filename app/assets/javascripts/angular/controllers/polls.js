@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('voteMe')
-  .controller('PollsCtrl', function ($scope, $rootScope, Poll, $timeout, $window) {
+  .controller('PollsCtrl', ['$scope', '$rootScope', 'Poll', '$timeout', '$window', function ($scope, $rootScope, Poll, $timeout, $window) {
     $scope.busy = false;
     $scope.polls = [];
     $scope.lastPoll = '';
@@ -67,4 +67,4 @@ angular.module('voteMe')
     //   $rootScope.$off('new-poll-added', $scope.addCreatedPoll);
     //   $rootScope.$off('search-event', $scope.search);
     // });
-  });
+  }]);

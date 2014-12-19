@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('voteMe')
-  .controller('PollsDetailCtrl', function ($scope, $rootScope, Poll, $routeParams, $location) {
+  .controller('PollsDetailCtrl', ['$scope', '$rootScope', 'Poll', '$routeParams', '$location', function ($scope, $rootScope, Poll, $routeParams, $location) {
     $scope.selectedAnswers = [];
     $scope.max = 0;
     Poll.get({id: $routeParams.id}, function(data){
@@ -63,4 +63,4 @@ angular.module('voteMe')
         }
       }
     };
-  });
+  }]);

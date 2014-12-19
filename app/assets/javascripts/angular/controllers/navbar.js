@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('voteMe')
-  .controller('NavBarCtrl', function ($scope, $rootScope, Poll, $modal, $http, $location) {
+  .controller('NavBarCtrl', ['$scope', '$rootScope', 'Poll', '$modal', '$http', '$location', function ($scope, $rootScope, Poll, $modal, $http, $location) {
     $scope.testObj = '';
 
     $scope.$watch('testObj', function (nV,oV) {
@@ -70,4 +70,4 @@ angular.module('voteMe')
     };
 
 
-  });
+  }]);
