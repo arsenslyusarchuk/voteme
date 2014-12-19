@@ -18,6 +18,7 @@ gem 'haml'
 gem 'haml-rails'
 gem 'turbolinks'
 gem 'angularjs-rails'
+gem 'angular-rails-templates'
 gem 'has_scope'
 gem 'angular-ui-bootstrap-rails'
 gem 'active_model_serializers', "~> 0.8.0"

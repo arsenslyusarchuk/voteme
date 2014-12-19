@@ -7,7 +7,8 @@ angular.module('voteMe', [
   'ngResource',
   'ui.bootstrap',
   'infinite-scroll',
-  'angucomplete'
+  'angucomplete',
+  'templates'
 ])
 
 .config(['$routeProvider', '$locationProvider',
@@ -19,11 +20,11 @@ angular.module('voteMe', [
     // });
     $routeProvider.
       when('/', {
-        templateUrl: 'assets/polls.html',
+        templateUrl: 'polls.html',
         controller: 'PollsCtrl'
       }).
       when('/polls/:id', {
-        templateUrl: 'assets/polls-detail.html',
+        templateUrl: 'polls-detail.html',
         controller: 'PollsDetailCtrl'
       }).
       otherwise({
