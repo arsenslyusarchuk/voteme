@@ -19,11 +19,11 @@ angular.module('voteMe', [
     // });
     $routeProvider.
       when('/', {
-        templateUrl: '/assets/polls.html',
+        templateUrl: 'assets/polls.html',
         controller: 'PollsCtrl'
       }).
       when('/polls/:id', {
-        templateUrl: '/assets/polls-detail.html',
+        templateUrl: 'assets/polls-detail.html',
         controller: 'PollsDetailCtrl'
       }).
       otherwise({
