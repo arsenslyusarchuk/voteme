@@ -14,6 +14,10 @@ gem "therubyracer"
 gem 'bootstrap-sass', '~> 3.3.1'
 gem 'autoprefixer-rails'
 
+gem "unicorn-rails"
+gem "sidekiq"
+gem 'mandrill_mailer'
+
 gem 'haml'
 gem 'haml-rails'
 gem 'turbolinks'

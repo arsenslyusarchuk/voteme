@@ -19,6 +19,10 @@ angular.module('voteMe')
       }
     }
 
+    $scope.endVoting = function() {
+      $scope.poll.$endVoting({stopped: true});
+    };
+
     $scope.toggleSelection = function (answerId) {
       var answerIndex = $scope.selectedAnswers.indexOf(answerId);
       if( answerIndex > -1) {

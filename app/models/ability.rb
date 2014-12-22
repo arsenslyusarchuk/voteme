@@ -7,5 +7,9 @@ class Ability
     can :destroy, Poll do |poll|
       poll.user.id == user.id
     end
+
+    can :stop, Poll do |poll|
+      poll.user.id == user.id
+    end
   end
 end

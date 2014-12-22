@@ -1,7 +1,7 @@
 module Api::V1
   class PollsController < ApiController
     respond_to :json
-    before_action :get_poll, only: [:show, :update, :destroy]
+    before_action :get_poll, only: [:show, :update, :destroy, :stop]
 
     has_scope :search
     has_scope :order_by_id
@@ -40,6 +40,13 @@ module Api::V1
       render json: @poll
     end
 
+    def stop
+      authorize! :stop, @poll
+      @poll.update_attributes! poll_params
+      SendEmailWorker.perform_async(@poll.id)
+      render json: @poll
+    end
+
     private
 
       def get_poll
@@ -47,7 +54,7 @@ module Api::V1
       end
 
       def poll_params
-        params.permit(:title, :description, :poll_type, answers_attributes: [:title])
+        params.permit(:title, :description, :poll_type, :stopped, answers_attributes: [:title])
       end
   end
 end
