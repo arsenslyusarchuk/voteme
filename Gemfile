@@ -18,6 +18,8 @@ gem "unicorn-rails"
 gem "sidekiq"
 gem 'mandrill_mailer'
 
+gem 'shoulda-matchers', github: "thoughtbot/shoulda-matchers" # Using this because it has more matchers
+
 gem 'haml'
 gem 'haml-rails'
 gem 'turbolinks'
@@ -59,7 +61,6 @@ end
 
 group :test do
   gem 'database_cleaner'
-  gem 'shoulda-matchers', github: "thoughtbot/shoulda-matchers" # Using this because it has more matchers
   gem 'timecop'
   gem 'webmock'
 end
