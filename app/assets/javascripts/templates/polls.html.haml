@@ -10,7 +10,7 @@
     %h1 {{lastPoll.title}}
     %p {{lastPoll.description}}
     %p
-      %a.btn.btn-primary.btn-lg(ng-href="/polls/{{lastPoll.id}}") Learn more »
+      %a.btn.btn-primary.btn-lg(ng-href="/polls/{{lastPoll.id}}") View details »
 .container(infinite-scroll="load_data()"  infinite-scroll-disabled='busy' infinite-scroll-distance='1' infinite-scroll-immediate-check='true')
   .row(ng-if='polls.length')
     .col-md-4.card(ng-repeat="poll in polls")
