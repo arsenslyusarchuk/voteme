@@ -1,5 +1,5 @@
 class VotingMailer < MandrillMailer::TemplateMailer
-  default from: 'Voteme'
+  default from: 'info@votemee.herokuapp.com'
 
   def vote_stopped poll_id, poll_url
     total_votes = 0
