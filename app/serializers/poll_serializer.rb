@@ -4,6 +4,10 @@ class PollSerializer < ActiveModel::Serializer
 
   has_many :answers
 
+  def created_at
+    object.created_at.strftime("%-d %b %Y")
+  end
+
   def user_voted
     user_has_voted
   end

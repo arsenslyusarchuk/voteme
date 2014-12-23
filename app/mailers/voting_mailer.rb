@@ -1,7 +1,7 @@
 class VotingMailer < MandrillMailer::TemplateMailer
-  default from: 'support@example.com'
+  default from: 'Voteme'
 
-  def vote_stopped poll_id
+  def vote_stopped poll_id, poll_url
     total_votes = 0
     poll = Poll.find(poll_id)
     answers = poll.answers.joins(:users).group("answers.title").count.to_a
@@ -23,7 +23,7 @@ class VotingMailer < MandrillMailer::TemplateMailer
         'POLL_DESCRIPTION' => poll.description,
         'ANSWERS' => answers,
         'TOTAL_VOTES' => total_votes,
-        # 'WEBSITE_URL' => "#{request.original_url}polls/#{poll.id}"
+        'WEBSITE_URL' => poll_url
       },
       important: true,
       inline_css: true

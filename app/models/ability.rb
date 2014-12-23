@@ -9,7 +9,7 @@ class Ability
     end
 
     can :stop, Poll do |poll|
-      poll.user.id == user.id
+      poll.user.id == user.id && !poll.stopped
     end
   end
 end

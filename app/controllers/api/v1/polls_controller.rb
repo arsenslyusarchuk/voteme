@@ -43,7 +43,7 @@ module Api::V1
     def stop
       authorize! :stop, @poll
       @poll.update_attributes! poll_params
-      SendEmailWorker.perform_async(@poll.id)
+      SendEmailWorker.perform_async(@poll.id, "#{request.protocol}#{request.host_with_port}/polls/#{@poll.id}")
       render json: @poll
     end
 

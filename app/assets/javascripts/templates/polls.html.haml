@@ -15,7 +15,8 @@
   .row(ng-if='polls.length')
     .col-md-4.card(ng-repeat="poll in polls")
       .well
-        %h2 {{poll.title}}
+        .small.pull-right {{poll.created_at}}
+        %h2.title {{poll.title}}
         %p.description {{poll.description}}
         %p
           %a.btn.btn-default(ng-href="/polls/{{poll.id}}") View details »

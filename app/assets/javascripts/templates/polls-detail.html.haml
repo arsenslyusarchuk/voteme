@@ -4,6 +4,7 @@
       .pull-right
         %a.btn.btn-lg.btn-danger(href="" ng-click="destroyPoll()" ng-if="poll.can_delete") Destroy
         %a.btn.btn-lg.btn-danger(href="" ng-click="endVoting()" ng-if="poll.can_delete" ng-disabled="!poll.can_stop") End Voting
+      .small {{poll.created_at}}
       %h2 {{poll.title}}
       %p {{poll.description}}
       %div(ng-if="!poll.user_voted")
