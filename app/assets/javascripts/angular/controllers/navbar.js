@@ -1,12 +1,16 @@
 'use strict';
 
 angular.module('voteMe')
-  .controller('NavBarCtrl', ['$scope', '$rootScope', 'Poll', '$modal', '$http', '$location', function ($scope, $rootScope, Poll, $modal, $http, $location) {
+  .controller('NavBarCtrl', ['$scope', '$rootScope', 'Poll', '$modal', '$http', '$location', '$routeParams', function ($scope, $rootScope, Poll, $modal, $http, $location, $routeParams) {
     $scope.testObj = '';
 
     $scope.$watch('testObj', function (nV,oV) {
       if (nV) {
-        $rootScope.$emit('search-event', nV.title);
+        if ($routeParams.id) {
+          $location.path("/").search({search: nV.title});
+        } else {
+          $rootScope.$emit('search-event', nV.title);
+        }
       }
     });
 

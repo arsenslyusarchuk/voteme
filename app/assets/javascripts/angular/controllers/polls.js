@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('voteMe')
-  .controller('PollsCtrl', ['$scope', '$rootScope', 'Poll', '$timeout', '$window', function ($scope, $rootScope, Poll, $timeout, $window) {
+  .controller('PollsCtrl', ['$scope', '$rootScope', 'Poll', '$timeout', '$window', '$location', '$routeParams', function ($scope, $rootScope, Poll, $timeout, $window, $location, $routeParams) {
     $scope.busy = false;
     $scope.polls = [];
     $scope.lastPoll = '';
@@ -9,7 +9,7 @@ angular.module('voteMe')
       page: 1,
       per_page: 10,
       order_by_id: 'desc',
-      search: ''
+      search: $routeParams.search || ''
     };
     $scope.isLastEmpty = false;
 
@@ -51,7 +51,7 @@ angular.module('voteMe')
           search: search
         };
         Poll.query($scope.filterCriteria, function(data){
-          if ($scope.lastPoll) {
+          if ($scope.lastPoll && $scope.lastPoll.id == data[0].id) {
             for(var i=0;i<data.length;i++){
               if (data[i].id === $scope.lastPoll.id) {
                 data.splice(0,1)[i];
@@ -70,9 +70,4 @@ angular.module('voteMe')
 
     $rootScope.$on('new-poll-added', $scope.addCreatedPoll);
     $rootScope.$on('search-event', $scope.search);
-
-    // $scope.$on('$destroy', function() {
-    //   $rootScope.$off('new-poll-added', $scope.addCreatedPoll);
-    //   $rootScope.$off('search-event', $scope.search);
-    // });
   }]);
