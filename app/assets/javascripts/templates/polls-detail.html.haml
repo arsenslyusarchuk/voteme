@@ -7,7 +7,7 @@
       .small {{poll.created_at}}
       %h2 {{poll.title}}
       %p {{poll.description}}
-      %div(ng-if="!poll.user_voted")
+      %div(ng-if="!poll.user_voted && !poll.stopped")
         .checkbox.checkbox-primary(ng-repeat="answer in poll.answers" ng-if="poll.poll_type === 'checkbox' ")
           %input{:name => "selectedAnswers[]", "ng-checked" => "selection.indexOf(answer.title) > -1", "ng-click" => "toggleSelection(answer.id)", :type => "checkbox", :id => "answer{{answer.id}}"}
           %label(for="answer{{answer.id}}")
