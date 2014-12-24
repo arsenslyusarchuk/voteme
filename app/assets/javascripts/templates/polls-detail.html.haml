@@ -19,7 +19,7 @@
             {{answer.title}}
         %p
           %a.btn.btn-lg.btn-primary(href="" ng-click="vote()" ng-disabled="checkDisabled()") Vote »
-      %div(ng-if="poll.user_voted")
+      %div(ng-if="poll.user_voted || poll.stopped")
         %hr/
         %h3
           Results
