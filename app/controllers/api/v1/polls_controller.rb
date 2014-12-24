@@ -7,11 +7,11 @@ module Api::V1
     has_scope :order_by_id
 
     def index
-      render json: apply_scopes(Poll).preload(:answers).paginate(page: params[:page], per_page: params[:per_page])
+      render json: apply_scopes(Poll).preload(:answers).paginate(page: params[:page], per_page: params[:per_page]), each_serializer: PollListSerializer
     end
 
     def search
-      render json: apply_scopes(Poll).paginate(page: params[:page], per_page: params[:per_page])
+      render json: apply_scopes(Poll).paginate(page: params[:page], per_page: params[:per_page]), each_serializer: PollListSerializer
     end
 
     def show
