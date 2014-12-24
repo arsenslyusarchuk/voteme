@@ -1,6 +1,6 @@
 class PollSerializer < ActiveModel::Serializer
   delegate :current_user, to: :scope
-  attributes :id, :title, :description, :user_id, :poll_type, :created_at, :user_voted, :voting_results, :can_delete, :stopped, :can_stop
+  attributes :id, :title, :description, :user_id, :poll_type, :created_at, :user_voted, :voting_results, :can_delete, :stopped, :can_stop, :total_users_voted
 
   has_many :answers
 
@@ -15,6 +15,12 @@ class PollSerializer < ActiveModel::Serializer
   def voting_results
     if user_has_voted
       object.answers.joins(:users).group("answers.id").count.to_a
+    end
+  end
+
+  def total_users_voted
+    if user_has_voted
+      User.select(:id).uniq.joins(:answers).where("answers.id IN (?) ", object.answers.pluck(:id)).map(&:id)
     end
   end
 
