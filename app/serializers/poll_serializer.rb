@@ -13,15 +13,11 @@ class PollSerializer < ActiveModel::Serializer
   end
 
   def voting_results
-    if user_has_voted
-      object.answers.joins(:users).group("answers.id").count.to_a
-    end
+    object.answers.joins(:users).group("answers.id").count.to_a
   end
 
   def total_users_voted
-    if user_has_voted
-      User.select(:id).uniq.joins(:answers).where("answers.id IN (?) ", object.answers.pluck(:id)).map(&:id)
-    end
+    User.select(:id).uniq.joins(:answers).where("answers.id IN (?) ", object.answers.pluck(:id)).map(&:id)
   end
 
   def can_delete

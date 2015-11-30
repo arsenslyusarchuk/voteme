@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_many :polls
+  has_many :special_polls, -> {where(title: "bnmbn")}, class_name: "Poll"
   has_and_belongs_to_many :answers
 
   def self.find_for_oauth(auth, signed_in_resource = nil)

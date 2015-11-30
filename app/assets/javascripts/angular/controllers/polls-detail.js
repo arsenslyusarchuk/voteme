@@ -12,10 +12,8 @@ angular.module('voteMe')
     });
 
     function setMax(){
-      if ($scope.poll.user_voted) {
-        for(var i=0;i<$scope.poll.voting_results.length;i++){
-          $scope.max += $scope.poll.voting_results[i][1];
-        }
+      for(var i=0;i<$scope.poll.voting_results.length;i++){
+        $scope.max += $scope.poll.voting_results[i][1];
       }
     }
 
