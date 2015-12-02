@@ -13,11 +13,7 @@ angular.module('voteMe', [
 
 .config(['$routeProvider', '$locationProvider',
   function($routeProvider,$locationProvider) {
-    $locationProvider.html5Mode(true);
-    // $locationProvider.html5Mode({
-    //   enabled: true,
-    //   requireBase: false
-    // });
+
     $routeProvider.
       when('/', {
         templateUrl: 'polls.html',
@@ -30,6 +26,11 @@ angular.module('voteMe', [
       otherwise({
         redirectTo: '/'
       });
+    // $locationProvider.html5Mode(true);
+    $locationProvider.html5Mode({
+      enabled: true,
+      requireBase: false
+    });
   }])
 
 .config(["$httpProvider", function($httpProvider) {

@@ -6,6 +6,7 @@ gem 'rails', '4.1.4'
 gem 'pg'
 
 gem 'omniauth'
+gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'devise'
 gem 'omniauth-facebook'
 gem "omniauth-google-oauth2"
@@ -55,7 +56,6 @@ group :development, :test do
   gem 'faker'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'rspec-rails'
-  gem 'faker'
   gem 'capybara', '>= 2.2.0'
 end
 

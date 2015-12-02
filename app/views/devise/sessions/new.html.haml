@@ -5,14 +5,14 @@
     %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
     %meta(name="viewport" content="width=device-width, initial-scale=1.0")
     = csrf_meta_tags
-    = javascript_include_tag "application", "data-turbolinks-track" => "true"
+    /= javascript_include_tag "application", "data-turbolinks-track" => "true"
     = stylesheet_link_tag "application", :media => "all", "data-turbolinks-track" => "true"
     = favicon_link_tag 'apple-touch-icon-144x144-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '144x144'
     = favicon_link_tag 'apple-touch-icon-114x114-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '114x114'
     = favicon_link_tag 'apple-touch-icon-72x72-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png', :sizes => '72x72'
     = favicon_link_tag 'apple-touch-icon-precomposed.png', :rel => 'apple-touch-icon-precomposed', :type => 'image/png'
     = favicon_link_tag 'favicon.ico', :rel => 'shortcut icon'
-    / %base{'href'=>"/"}
+    /%base{'href'=>"/"}
   %body.signin-body{"cz-shortcut-listen" => "true"}
     .container
       .form-signin{:role => "form"}
@@ -21,4 +21,3 @@
         %br/
         = link_to "Sign in with Google", omniauth_authorize_path(resource_name, :google_oauth2), class: 'btn btn-xlarge btn-danger btn-block'
         %br/
-

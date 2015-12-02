@@ -3,7 +3,7 @@
 Devise.setup do |config|
 
   config.omniauth :facebook, ENV['facebook_id'], ENV['facebook_secret']
-  config.omniauth :google_oauth2, ENV['google_id'], ENV['google_secret']
+  config.omniauth :google_oauth2, ENV['google_id'], ENV['google_secret'], skip_jwt: true
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
