@@ -18,6 +18,7 @@ gem 'autoprefixer-rails'
 gem "unicorn-rails"
 gem "sidekiq"
 gem 'mandrill_mailer'
+gem 'sinatra', :require => nil
 
 gem 'shoulda-matchers', github: "thoughtbot/shoulda-matchers" # Using this because it has more matchers
 

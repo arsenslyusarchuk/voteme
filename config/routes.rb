@@ -1,5 +1,8 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
   devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks', sessions: 'sessions' }
+
+  mount Sidekiq::Web, at: '/xmt27nlb'
 
   namespace :api do
     namespace :v1 do
